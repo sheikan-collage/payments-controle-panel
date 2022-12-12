@@ -1,3 +1,6 @@
+
+export const mainEventBus = new Vue({ store });
+
 import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
@@ -24,7 +27,6 @@ Vue.prototype.$permissions = () => {
   return mainEventBus.$store.getters["Supervisors/permissions"];
 };
 
-export const mainEventBus = new Vue({ store });
 
 const vm = new Vue({
   router,

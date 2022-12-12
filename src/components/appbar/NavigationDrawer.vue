@@ -11,11 +11,8 @@
     <v-divider class=""></v-divider>
     <v-list class="pa-0 ma-0">
       <v-list-item class="px-2" route :to="{ name: 'Home' }">
-        <!-- <v-img :src="require('../../assets/ocean_logo_detailed.png')"></v-img> -->
-        <div class="d-flex text-center align-center my-6">
-          <span class="blue--text font-weight-bold"> Space</span>
-          <span class="orange--text font-weight-black">Kom </span>
-        </div>
+        <v-img :src="require('../../assets/000logoengshc.png')"></v-img>
+       
       </v-list-item>
     </v-list>
 

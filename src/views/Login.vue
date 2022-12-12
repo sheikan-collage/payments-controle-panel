@@ -12,11 +12,10 @@
         >
           <v-card-title class="pb-0 pt-2">
             <v-spacer></v-spacer>
-            <!-- <v-img :src="require('../assets/ocean_logo_detailed.png')"></v-img> -->
-            <div class="d-flex align-center my-6">
-              <span class="blue--text display-1 font-weight-bold"> Space</span>
-              <span class="orange--text display-1 font-weight-black">Kom </span>
-            </div>
+            <v-img
+              class="my-8"
+              :src="require('../assets/000logoengshc.png')"
+            ></v-img>
             <v-spacer></v-spacer>
           </v-card-title>
           <v-card-title class="">
