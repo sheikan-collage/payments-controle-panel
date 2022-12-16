@@ -5,6 +5,82 @@
     "go_to_your_profile": "see your profile"
   },
   "pages": {
+    "fees": {
+      "title": "Student fees",
+      "subtitle": "fees for students",
+      "datatable": {
+        "headers": {
+          "name": "Name",
+          "amount": "Amount",
+          "currency": "Currency",
+          "students_count": "Students",
+          "remove": "Remove"
+        }
+      }
+    },
+    "students": {
+      "datatable": {
+        "show_controllers": "Show Controllers",
+        "headers": {
+          "university_id": "University ID",
+          "name": "Name",
+          "department": "Department",
+          "batch": "Batch",
+          "level": "Level",
+          "fees_name": "Fees",
+          "fees_amount": "Fees Amount",
+          "fees_currency": "Fees Currency",
+          "installments_name": "Installments",
+          "installments_details": "Installments Details",
+          "reductions_name": "Reductions",
+          "reductions_amount": "Reductions Amount",
+          "total_reductions": "Total Reductions",
+          "total_bill": "Total bill",
+          "total_payed_amount": "Total Payed",
+          "remaining_payments_amount": "Total Remaining",
+          "payments_count": "Payments Count",
+          "last_payment": "Last Payment",
+          "payed_progress": "Payment Progress",
+          "is_active": "Activation",
+          "created_at": "Creation Date",
+          "updated_at": "Last Update"
+        }
+      }
+    },
+    "create_fees": {
+      "title": "Add New Fees",
+      "form": {
+        "name": {
+          "placeholder": "Enter Fees name",
+          "label": "Name",
+          "errors": {
+            "empty": "Please Enter the name"
+          }
+        },
+        "amount": {
+          "placeholder": "Enter Fees amount",
+          "label": "Amount",
+          "errors": {
+            "empty": "Invalid amount value must be at least 1"
+          }
+        },
+        "currency": {
+          "label": "Currency",
+          "placeholder": "Select Currency",
+          "errors": {
+            "empty": "Please select currency"
+          }
+        },
+        "save": "Save",
+        "cancel": "Cancel"
+      }
+    },
+    "show_fees": {
+      "tabs": {
+        "basic": "Basic",
+        "students": "Students"
+      }
+    },
     "not_found": {
       "title": "not found",
       "message": "We can not find what you are looking for",
@@ -135,12 +211,13 @@
         "operations": "Operations"
       }
     }
-    
   },
   "navigation": {
     "drawer": {
       "roles": "Supervisors Roles",
-      "supervisors": "Supervisors"
+      "supervisors": "Supervisors",
+      "fees": "Fees",
+      "installments": "Installments"
     }
   },
   "components": {
@@ -227,6 +304,11 @@
     "save": "Save",
     "remove": "Remove",
     "password": "Password",
-    "confirm_password": "Confirm Password"
+    "confirm_password": "Confirm Password",
+    "cant_remove_students_relation": "Cannot remove this entity because there are students related to it",
+    "download": "Download",
+    "refresh": "Refresh",
+    "active": "Active",
+    "suspended": "Suspended"
   }
 }

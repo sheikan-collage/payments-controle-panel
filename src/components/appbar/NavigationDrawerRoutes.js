@@ -1,5 +1,22 @@
 export default [
   {
+    titleKey: "Fees",
+    icon: "mdi-currency-usd",
+    name: "Fees.index",
+    hasOneOf: ["fees::add", "fees::remove", "fees::retrieve", "fees::update"],
+  },
+  {
+    titleKey: "Installments",
+    icon: "mdi-format-list-checks",
+    name: "Installments.index",
+    hasOneOf: [
+      "installments::add",
+      "installments::retrieve",
+      "installments::update",
+      "installments::remove",
+    ],
+  },
+  {
     titleKey: "Supervisors",
     icon: "mdi-account-tie-outline",
     name: "Supervisors.index",
