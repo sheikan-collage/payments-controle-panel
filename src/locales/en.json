@@ -6,7 +6,7 @@
   },
   "pages": {
     "fees": {
-      "title": "Student fees",
+      "title": "Students' fees",
       "subtitle": "fees for students",
       "datatable": {
         "headers": {
@@ -15,35 +15,6 @@
           "currency": "Currency",
           "students_count": "Students",
           "remove": "Remove"
-        }
-      }
-    },
-    "students": {
-      "datatable": {
-        "show_controllers": "Show Controllers",
-        "headers": {
-          "university_id": "University ID",
-          "name": "Name",
-          "department": "Department",
-          "batch": "Batch",
-          "level": "Level",
-          "fees_name": "Fees",
-          "fees_amount": "Fees Amount",
-          "fees_currency": "Fees Currency",
-          "installments_name": "Installments",
-          "installments_details": "Installments Details",
-          "reductions_name": "Reductions",
-          "reductions_amount": "Reductions Amount",
-          "total_reductions": "Total Reductions",
-          "total_bill": "Total bill",
-          "total_payed_amount": "Total Payed",
-          "remaining_payments_amount": "Total Remaining",
-          "payments_count": "Payments Count",
-          "last_payment": "Last Payment",
-          "payed_progress": "Payment Progress",
-          "is_active": "Activation",
-          "created_at": "Creation Date",
-          "updated_at": "Last Update"
         }
       }
     },
@@ -79,6 +50,76 @@
       "tabs": {
         "basic": "Basic",
         "students": "Students"
+      }
+    },
+    "installments": {
+      "title": "Students' installments",
+      "subtitle": "installments for students",
+      "datatable": {
+        "headers": {
+          "name": "Name",
+          "divisions": "Divisions",
+          "students_count": "Students",
+          "remove": "Remove"
+        }
+      }
+    },
+    "create_installments": {
+      "title": "Add New Installments",
+      "form": {
+        "name": {
+          "placeholder": "Enter Installments name",
+          "label": "Name",
+          "errors": {
+            "empty": "Please Enter the name"
+          }
+        },
+        "divisions": {
+          "auto_adjust": "Auto fill",
+          "placeholder": "Enter Installments divisions percentage",
+          "label": "Divisions",
+          "errors": {
+            "empty": "Invalid division value must be at least 1%",
+            "invalid": "Invalid: division value must be at least 1% and divisions summation is equal to 100%"
+          }
+        },
+        "save": "Save",
+        "cancel": "Cancel"
+      }
+    },
+    "show_installments": {
+      "tabs": {
+        "basic": "Basic",
+        "students": "Students"
+      }
+    },
+    "students": {
+      "datatable": {
+        "show_controllers": "Show Controllers",
+        "headers": {
+          "university_id": "University ID",
+          "name": "Name",
+          "department": "Department",
+          "batch": "Batch",
+          "level": "Level",
+          "fees_name": "Fees",
+          "fees_amount": "Fees Amount",
+          "fees_currency": "Fees Currency",
+          "installments_name": "Installments",
+          "installments_details": "Installments Details",
+          "reductions_name": "Reductions",
+          "reductions_amount": "Reductions Amount",
+          "total_reductions": "Total Reductions",
+          "total_bill": "Total bill",
+          "total_payed_amount": "Total Payed",
+          "remaining_payments_amount": "Total Remaining",
+          "payments_count": "Payments Count",
+          "last_payment": "Last Payment",
+          "payed_progress": "Payment Progress",
+          "is_active": "Activation",
+          "created_at": "Creation Date",
+          "updated_at": "Last Update"
+        }
       }
     },
     "not_found": {

@@ -153,27 +153,69 @@
               cellspacing="0"
               cellpadding="7"
               style="border-radius: 5px"
+              @click="
+                showInstallmentsAsPercentage = !showInstallmentsAsPercentage
+              "
             >
               <tbody>
-                <tr>
-                  <td
-                    v-for="(division, index) of item.installments.divisions"
-                    :key="item.installments.id + division + index"
-                  >
-                    <span class="ma-2 font-weight-bold"> {{ division }}% </span>
-                  </td>
-                </tr>
-                <tr>
-                  <td
-                    v-for="(division, index) of item.installments.divisions"
-                    :key="item.installments.id + division + index"
-                  >
-                    <span class="ma-2 font-weight-bold">
-                      {{ ((division * item.total_bill) / 100).toFixed(2) }}
-                      {{ item.fees.currency }}
-                    </span>
-                  </td>
-                </tr>
+                <v-tooltip top>
+                  <template v-slot:activator="{ on, attrs }">
+                    <tr
+                      v-bind="attrs"
+                      v-on="on"
+                      v-if="showInstallmentsAsPercentage"
+                    >
+                      <td
+                        v-for="(division, index) of item.installments.divisions"
+                        :key="item.installments.id + division + index"
+                      >
+                        <span class="ma-2 font-weight-bold">
+                          {{ division }}%
+                        </span>
+                      </td>
+                    </tr>
+                    <tr v-bind="attrs" v-on="on" v-else>
+                      <td
+                        v-for="(division, index) of item.installments.divisions"
+                        :key="item.installments.id + division + index"
+                      >
+                        <span class="ma-2 font-weight-bold">
+                          {{ ((division * item.total_bill) / 100).toFixed(2) }}
+                        </span>
+                      </td>
+                      <td>
+                        <span class="ma-2 font-weight-bold success--text">
+                          {{ item.fees.currency }}
+                        </span>
+                      </td>
+                    </tr>
+                  </template>
+                  <tr v-if="!showInstallmentsAsPercentage">
+                    <td
+                      v-for="(division, index) of item.installments.divisions"
+                      :key="item.installments.id + division + index"
+                    >
+                      <span class="ma-2 font-weight-bold">
+                        {{ division }}%
+                      </span>
+                    </td>
+                  </tr>
+                  <tr v-if="showInstallmentsAsPercentage">
+                    <td
+                      v-for="(division, index) of item.installments.divisions"
+                      :key="item.installments.id + division + index"
+                    >
+                      <span class="ma-2 font-weight-bold">
+                        {{ ((division * item.total_bill) / 100).toFixed(2) }}
+                      </span>
+                    </td>
+                    <td>
+                      <span class="ma-2 font-weight-bold success--text">
+                        {{ item.fees.currency }}
+                      </span>
+                    </td>
+                  </tr>
+                </v-tooltip>
               </tbody>
             </table>
           </template>
@@ -259,6 +301,7 @@ export default {
     selectedStudents: [],
     showControllers: false,
     showSearchBar: false,
+    showInstallmentsAsPercentage: true,
   }),
   computed: {
     headers() {

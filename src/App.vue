@@ -2,11 +2,22 @@
   <v-app>
     <app-bar v-if="showAppBar"></app-bar>
     <v-main id="main-area">
-      <v-snackbar v-model="showSystemCustomAlert" color="error" top center multi-line>
+      <v-snackbar
+        v-model="showSystemCustomAlert"
+        color="error"
+        top
+        center
+        multi-line
+      >
         {{ alertText }}
 
         <template v-slot:action="{ attrs }">
-          <v-btn dark icon v-bind="attrs" @click="showSystemCustomAlert = false">
+          <v-btn
+            dark
+            icon
+            v-bind="attrs"
+            @click="showSystemCustomAlert = false"
+          >
             <v-icon>mdi-close</v-icon>
           </v-btn>
         </template>
@@ -135,3 +146,17 @@ export default {
   },
 };
 </script>
+
+<style>
+input[type="number"] {
+  -moz-appearance: textfield;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  margin: 0;
+}
+</style>
