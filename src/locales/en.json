@@ -93,6 +93,57 @@
         "students": "Students"
       }
     },
+    "reductions": {
+      "title": "Students' reductions",
+      "subtitle": "reductions for students",
+      "datatable": {
+        "headers": {
+          "name": "Name",
+          "amount": "Amount",
+          "is_percentage": "type",
+          "students_count": "Students",
+          "remove": "Remove"
+        }
+      }
+    },
+    "create_reductions": {
+      "title": "Add New reductions",
+      "form": {
+        "name": {
+          "placeholder": "Enter reductions name",
+          "label": "Name",
+          "errors": {
+            "empty": "Please Enter the name"
+          }
+        },
+        "amount": {
+          "placeholder": "Enter reductions amount",
+          "label": "Amount",
+          "errors": {
+            "empty": "Invalid amount value must be at least 1"
+          }
+        },
+        "type": {
+          "label": "Type",
+          "placeholder": "Select Type",
+          "types": {
+            "percentage": "percentage",
+            "exact_amount": "amount"
+          },
+          "errors": {
+            "empty": "Please select type"
+          }
+        },
+        "save": "Save",
+        "cancel": "Cancel"
+      }
+    },
+    "show_reductions": {
+      "tabs": {
+        "basic": "Basic",
+        "students": "Students"
+      }
+    },
     "students": {
       "datatable": {
         "show_controllers": "Show Controllers",
@@ -258,7 +309,10 @@
       "roles": "Supervisors Roles",
       "supervisors": "Supervisors",
       "fees": "Fees",
-      "installments": "Installments"
+      "installments": "Installments",
+      "reductions": "Reductions",
+      "students": "Students",
+      "payments": "Payments"
     }
   },
   "components": {

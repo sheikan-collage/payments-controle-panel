@@ -5,6 +5,7 @@ import supervisorsRoutes from "./supervisors";
 import rolesRoutes from "./roles";
 import fees from "./fees";
 import installments from "./installments";
+import reductions from "./reductions";
 
 Vue.use(VueRouter);
 
@@ -38,7 +39,14 @@ const mainRoutes = [
   },
 ];
 
-const routes = [...mainRoutes, ...supervisorsRoutes, ...rolesRoutes, ...fees, ...installments];
+const routes = [
+  ...mainRoutes,
+  ...supervisorsRoutes,
+  ...rolesRoutes,
+  ...fees,
+  ...installments,
+  ...reductions,
+];
 
 const router = new VueRouter({
   routes,

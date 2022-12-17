@@ -17,6 +17,17 @@ export default [
     ],
   },
   {
+    titleKey: "Reductions",
+    icon: "mdi-ticket-percent-outline",
+    name: "Reductions.index",
+    hasOneOf: [
+      "reductions::add",
+      "reductions::retrieve",
+      "reductions::update",
+      "reductions::remove",
+    ],
+  },
+  {
     titleKey: "Supervisors",
     icon: "mdi-account-tie-outline",
     name: "Supervisors.index",
