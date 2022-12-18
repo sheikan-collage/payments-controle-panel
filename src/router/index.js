@@ -6,6 +6,7 @@ import rolesRoutes from "./roles";
 import fees from "./fees";
 import installments from "./installments";
 import reductions from "./reductions";
+import students from "./students";
 
 Vue.use(VueRouter);
 
@@ -46,6 +47,7 @@ const routes = [
   ...fees,
   ...installments,
   ...reductions,
+  ...students,
 ];
 
 const router = new VueRouter({

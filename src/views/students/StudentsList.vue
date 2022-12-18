@@ -1,6 +1,6 @@
 <template>
   <div>
-    <v-card class="pa-0">
+    <v-card class="pa-0" flat>
       <v-card-title class="pa-0 ma-0 pb-2">
         <v-spacer></v-spacer>
         <v-btn
@@ -232,6 +232,7 @@
 
 <script>
 import api from "@/api";
+import { mainEventBus } from "@/main";
 
 const allFields = [
   "university_id",
@@ -281,7 +282,14 @@ export default {
     },
     fields: {
       type: Array,
-      default: () => ["university_id", "name", "department", "batch", "level"],
+      default: () => [
+        "university_id",
+        "name",
+        "department",
+        "batch",
+        "level",
+        "is_active",
+      ],
     },
   },
   components: {},
@@ -292,6 +300,7 @@ export default {
       this.selectedFields.push("university_id");
     }
     this.loadStudents();
+    mainEventBus.$on("updateStudents", this.loadStudents);
   },
   data: () => ({
     search: null,

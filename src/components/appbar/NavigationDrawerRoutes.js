@@ -28,6 +28,17 @@ export default [
     ],
   },
   {
+    titleKey: "Students",
+    icon: "mdi-school",
+    name: "Students.index",
+    hasOneOf: [
+      "students::add",
+      "students::retrieve",
+      "students::update",
+      "students::remove",
+    ],
+  },
+  {
     titleKey: "Supervisors",
     icon: "mdi-account-tie-outline",
     name: "Supervisors.index",

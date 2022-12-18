@@ -27,16 +27,13 @@
           </v-hover>
         </template>
         <template v-slot:[`item.amount`]="{ item }">
-          <span
-            class="font-weight-bold"
-            :class="{ 'grey--text': !item.is_percentage }"
-            >{{ item.amount }}</span
-          >
-          <v-icon
-            size="20"
-            :color="item.is_percentage ? 'black': 'grey'"
-            v-text="item.is_percentage ? 'mdi-percent' : 'mdi-currency-usd'"
-          ></v-icon>
+          <v-chip :color="item.is_percentage ? 'success' : 'secondary'">
+            <span class="font-weight-bold">{{ item.amount }}</span>
+            <v-icon
+              size="20"
+              v-text="item.is_percentage ? 'mdi-percent' : 'mdi-currency-usd'"
+            ></v-icon>
+          </v-chip>
         </template>
         <template v-slot:[`item.is_percentage`]="{ item }">
           <span

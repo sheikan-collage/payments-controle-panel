@@ -145,6 +145,8 @@
       }
     },
     "students": {
+      "title": "Students",
+      "subtitle": "system registered students",
       "datatable": {
         "show_controllers": "Show Controllers",
         "headers": {
@@ -171,6 +173,86 @@
           "created_at": "Creation Date",
           "updated_at": "Last Update"
         }
+      }
+    },
+    "create_student": {
+      "title": "Add New Student",
+      "form": {
+        "name": {
+          "placeholder": "Enter Student name",
+          "label": "Name",
+          "errors": {
+            "empty": "Please Enter the name"
+          }
+        },
+        "university_id": {
+          "placeholder": "Enter Student's university ID",
+          "label": "University ID",
+          "errors": {
+            "empty": "Please Enter student's university ID"
+          }
+        },
+        "department": {
+          "placeholder": "Enter Student's department",
+          "label": "Department",
+          "errors": {
+            "empty": "Please Enter department"
+          }
+        },
+        "level": {
+          "placeholder": "Enter Student's level",
+          "label": "Level",
+          "errors": {
+            "empty": "Please Enter student's level"
+          }
+        },
+        "batch": {
+          "placeholder": "Enter Student's batch",
+          "label": "Batch",
+          "errors": {
+            "empty": "Please Enter student's batch"
+          }
+        },
+        "fees": {
+          "placeholder": "Select student fees",
+          "label": "Fees",
+          "errors": {
+            "empty": "Please Select fees"
+          }
+        },
+        "installments": {
+          "placeholder": "Select student installments",
+          "label": "Installments",
+          "errors": {
+            "empty": "Please Select installments"
+          }
+        },
+        "reductions": {
+          "placeholder": "Selected student reductions",
+          "label": "Reductions",
+          "errors": {
+            "empty": "Please Select reductions"
+          }
+        },
+        "activate": {
+          "placeholder": "Selected student activation status",
+          "label": "Activation",
+          "statuses": {
+            "active": "Active",
+            "suspended": "Suspended"
+          },
+          "errors": {
+            "empty": "Please Select activation status"
+          }
+        },
+        "save": "Save",
+        "cancel": "Cancel"
+      }
+    },
+    "show_student": {
+      "tabs": {
+        "basic": "Basic",
+        "payments": "Payments"
       }
     },
     "not_found": {
@@ -401,6 +483,7 @@
     "password": "Password",
     "confirm_password": "Confirm Password",
     "cant_remove_students_relation": "Cannot remove this entity because there are students related to it",
+    "cant_remove_payments_relation": "Cannot remove this entity because there are payments related to it",
     "download": "Download",
     "refresh": "Refresh",
     "active": "Active",
