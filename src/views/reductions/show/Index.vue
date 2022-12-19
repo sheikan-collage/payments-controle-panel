@@ -13,19 +13,23 @@
         </v-btn>
         <div class="d-inline-block">
           <v-tabs center-active v-model="openedTab">
-            <v-tab href="#basic">{{ $t("pages.show_reductions.tabs.basic") }}</v-tab>
+            <v-tab href="#basic">{{
+              $t("pages.show_reductions.tabs.basic")
+            }}</v-tab>
             <v-tab
               v-if="$permissions().has(['students::retrieve'])"
               href="#students"
             >
               {{ $t("pages.show_reductions.tabs.students") }}
             </v-tab>
-            <v-tab v-if="$permissions().has(['reductions::update'])" href="#edit">{{
-              $t("misc.edit")
-            }}</v-tab>
+            <v-tab
+              v-if="canEdit && $permissions().has(['reductions::update'])"
+              href="#edit"
+              >{{ $t("misc.edit") }}</v-tab
+            >
 
             <v-tab
-              v-if="$permissions().has(['reductions::remove'])"
+              v-if="canRemove && $permissions().has(['reductions::remove'])"
               class="error--text"
               href="#remove"
               >{{ $t("misc.remove") }}</v-tab
@@ -79,14 +83,17 @@
               :bulk-assign="false"
             />
           </v-tab-item>
-          <v-tab-item v-if="$permissions().has(['reductions::update'])" value="edit">
-            <reductions-tab-edit :reductions="reductions" />
+          <v-tab-item value="edit">
+            <reductions-tab-edit
+              :reductions="reductions"
+              v-if="canEdit && $permissions().has(['reductions::update'])"
+            />
           </v-tab-item>
-          <v-tab-item
-            v-if="$permissions().has(['reductions::remove'])"
-            value="remove"
-          >
-            <reductions-tab-remove :reductions="reductions" />
+          <v-tab-item value="remove">
+            <reductions-tab-remove
+              :reductions="reductions"
+              v-if="canRemove && $permissions().has(['reductions::remove'])"
+            />
           </v-tab-item>
         </v-tabs-items>
       </v-card-text>
@@ -100,8 +107,14 @@ import ReductionsTabBasics from "./tabs/ReductionsTabBasics.vue";
 import ReductionsTabEdit from "./tabs/ReductionsTabEdit.vue";
 import ReductionsTabRemove from "./tabs/ReductionsTabRemove.vue";
 import StudentsList from "@/views/students/StudentsList.vue";
+import { DEFAULT_REDUCTIONS_ID } from "../config";
 export default {
-  components: { ReductionsTabBasics, ReductionsTabEdit, ReductionsTabRemove, StudentsList },
+  components: {
+    ReductionsTabBasics,
+    ReductionsTabEdit,
+    ReductionsTabRemove,
+    StudentsList,
+  },
   async created() {
     this.$permissions().authorize(["reductions::retrieve"]);
     await this.loadReductions();
@@ -113,7 +126,16 @@ export default {
       reductions: {},
     };
   },
-  computed: {},
+  computed: {
+    canEdit() {
+      if (this.reductions.id != DEFAULT_REDUCTIONS_ID) return true;
+      return false;
+    },
+    canRemove() {
+      if (this.reductions.id != DEFAULT_REDUCTIONS_ID) return true;
+      return false;
+    },
+  },
   methods: {
     goBack() {
       window.history.back();

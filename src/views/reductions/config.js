@@ -1,0 +1,1 @@
+export const DEFAULT_REDUCTIONS_ID = 11111;

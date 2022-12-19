@@ -66,7 +66,7 @@
       </v-row>
     </v-card-title>
     <v-card-actions class="pa-2">
-      <v-btn large color="primary" :loading="loading" @click="save" block>
+      <v-btn large color="primary" :loading="loading" @click="save">
         <v-icon>mdi-content-save</v-icon>
         <span class="mx-2"></span>
         <span>{{ $t("pages.create_role.form.save") }}</span>

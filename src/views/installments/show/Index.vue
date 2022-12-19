@@ -13,19 +13,23 @@
         </v-btn>
         <div class="d-inline-block">
           <v-tabs center-active v-model="openedTab">
-            <v-tab href="#basic">{{ $t("pages.show_installments.tabs.basic") }}</v-tab>
+            <v-tab href="#basic">{{
+              $t("pages.show_installments.tabs.basic")
+            }}</v-tab>
             <v-tab
               v-if="$permissions().has(['students::retrieve'])"
               href="#students"
             >
               {{ $t("pages.show_installments.tabs.students") }}
             </v-tab>
-            <v-tab v-if="$permissions().has(['installments::update'])" href="#edit">{{
-              $t("misc.edit")
-            }}</v-tab>
+            <v-tab
+              v-if="canEdit && $permissions().has(['installments::update'])"
+              href="#edit"
+              >{{ $t("misc.edit") }}</v-tab
+            >
 
             <v-tab
-              v-if="$permissions().has(['installments::remove'])"
+              v-if="canRemove && $permissions().has(['installments::remove'])"
               class="error--text"
               href="#remove"
               >{{ $t("misc.remove") }}</v-tab
@@ -79,14 +83,17 @@
               :bulk-assign="false"
             />
           </v-tab-item>
-          <v-tab-item v-if="$permissions().has(['installments::update'])" value="edit">
-            <installments-tab-edit :installments="installments" />
+          <v-tab-item value="edit">
+            <installments-tab-edit
+              v-if="canEdit && $permissions().has(['installments::update'])"
+              :installments="installments"
+            />
           </v-tab-item>
-          <v-tab-item
-            v-if="$permissions().has(['installments::remove'])"
-            value="remove"
-          >
-            <installments-tab-remove :installments="installments" />
+          <v-tab-item value="remove">
+            <installments-tab-remove
+              v-if="canRemove && $permissions().has(['installments::remove'])"
+              :installments="installments"
+            />
           </v-tab-item>
         </v-tabs-items>
       </v-card-text>
@@ -98,6 +105,7 @@
 import api from "@/api";
 
 import StudentsList from "@/views/students/StudentsList.vue";
+import { DEFAULT_INSTALLMENT_ID } from "../config";
 import InstallmentsTabBasics from "./tabs/InstallmentsTabBasics.vue";
 import InstallmentsTabEdit from "./tabs/InstallmentsTabEdit.vue";
 import InstallmentsTabRemove from "./tabs/InstallmentsTabRemove.vue";
@@ -119,7 +127,16 @@ export default {
       installments: {},
     };
   },
-  computed: {},
+  computed: {
+    canEdit() {
+      if (this.installments.id != DEFAULT_INSTALLMENT_ID) return true;
+      return false;
+    },
+    canRemove() {
+      if (this.installments.id != DEFAULT_INSTALLMENT_ID) return true;
+      return false;
+    },
+  },
   methods: {
     goBack() {
       window.history.back();
