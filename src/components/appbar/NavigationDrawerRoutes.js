@@ -72,10 +72,10 @@ export default [
       "roles::set_permissions",
     ],
   },
-  // {
-  //   titleKey: "Activities",
-  //   icon: "mdi-file-document-outline",
-  //   name: "Supervisors.activities.index",
-  //   hasOneOf: ["activity_logs::retrieve"],
-  // },
+  {
+    titleKey: "Activities",
+    icon: "mdi-file-document-outline",
+    name: "Supervisors.activities.index",
+    hasOneOf: ["activity_logs::retrieve"],
+  },
 ];
