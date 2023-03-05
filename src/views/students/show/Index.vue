@@ -13,9 +13,9 @@
         </v-btn>
         <div class="d-inline-block">
           <v-tabs center-active v-model="openedTab">
-            <v-tab href="#basic">{{
+            <!-- <v-tab href="#basic">{{
               $t("pages.show_student.tabs.basic")
-            }}</v-tab>
+            }}</v-tab> -->
             <v-tab
               v-if="$permissions().has(['payments::retrieve'])"
               href="#payments"
@@ -52,7 +52,7 @@
             v-if="$permissions().has(['payments::retrieve'])"
             value="payments"
           >
-            <h1>students payments history</h1>
+            <students-tab-payments :student="student"  />
           </v-tab-item>
           <v-tab-item
             v-if="$permissions().has(['students::update'])"
@@ -77,8 +77,9 @@ import api from "@/api";
 import StudentsTabBasics from "./tabs/StudentsTabBasics.vue";
 import StudentsTabEdit from "./tabs/StudentsTabEdit.vue";
 import StudentsTabRemove from "./tabs/StudentsTabRemove.vue";
+import StudentsTabPayments from './tabs/StudentsTabPayments.vue';
 export default {
-  components: { StudentsTabBasics, StudentsTabEdit, StudentsTabRemove },
+  components: { StudentsTabBasics, StudentsTabEdit, StudentsTabRemove, StudentsTabPayments },
   async created() {
     this.$permissions().authorize(["students::retrieve"]);
     await this.loadStudent();

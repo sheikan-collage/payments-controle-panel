@@ -13,9 +13,9 @@
         </v-btn>
         <div class="d-inline-block">
           <v-tabs center-active v-model="openedTab">
-            <v-tab href="#basic">{{
+            <!-- <v-tab href="#basic">{{
               $t("pages.show_reductions.tabs.basic")
-            }}</v-tab>
+            }}</v-tab> -->
             <v-tab
               v-if="$permissions().has(['students::retrieve'])"
               href="#students"

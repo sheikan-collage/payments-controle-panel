@@ -255,6 +255,53 @@
         "payments": "Payments"
       }
     },
+    "activities": {
+      "title": "Supervisors Activities log",
+      "subtitle": "A log for supervisors activity",
+      "datatable": {
+        "headers": {
+          "supervisor": "Supervisor",
+          "event": "Event",
+          "description": "Description",
+          "date": "Date",
+          "extra": "Extra Information"
+        }
+      }
+    },
+    "payments": {
+      "title": "Payments Report",
+      "subtitle": "all students payments",
+      "datatable": {
+        "show_controllers": "Show Controllers",
+        "headers": {
+          "university_id": "University ID",
+          "name": "Name",
+          "department": "Department",
+          "batch": "Batch",
+          "level": "Level",
+          "fees_name": "Fees",
+          "fees_amount": "Fees Amount",
+          "fees_currency": "Fees Currency",
+          "installments_name": "Installments",
+          "installments_details": "Installments Details",
+          "reductions_name": "Reductions",
+          "reductions_amount": "Reductions Amount",
+          "total_reductions": "Total Reductions",
+          "total_bill": "Total bill",
+          "total_payed_amount": "Total Payed",
+          "remaining_payments_amount": "Total Remaining",
+          "payments_count": "Payments Count",
+          "last_payment": "Last Payment",
+          "payed_progress": "Payment Progress",
+          "is_active": "Activation",
+          "created_at": "Creation Date",
+          "updated_at": "Last Update",
+          "payed_amount": "Payed Amount",
+          "currency": "Currency",
+          "reference_id": "Reference ID"
+        }
+      }
+    },
     "not_found": {
       "title": "not found",
       "message": "We can not find what you are looking for",
@@ -394,7 +441,8 @@
       "installments": "Installments",
       "reductions": "Reductions",
       "students": "Students",
-      "payments": "Payments"
+      "payments": "Payments",
+      "activities": "Activities"
     }
   },
   "components": {

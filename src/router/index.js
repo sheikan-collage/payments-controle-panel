@@ -7,6 +7,7 @@ import fees from "./fees";
 import installments from "./installments";
 import reductions from "./reductions";
 import students from "./students";
+import payments from "./payments";
 
 Vue.use(VueRouter);
 
@@ -48,6 +49,7 @@ const routes = [
   ...installments,
   ...reductions,
   ...students,
+  ...payments,
 ];
 
 const router = new VueRouter({

@@ -22,7 +22,7 @@
           :loading="loading"
           :disabled="loading"
           text
-          @click="loadStudents"
+          @click="loadPayments"
           icon
         >
           <v-icon>mdi-refresh</v-icon>
@@ -30,7 +30,7 @@
           {{ $t("misc.refresh") }} -->
         </v-btn>
         <span class="mx-2"></span>
-        <download-excel :data="students" v-if="downloadable">
+        <download-excel :data="payments" v-if="downloadable">
           <v-btn large color="success" icon>
             <v-icon>mdi-download</v-icon>
             <!-- <span class="mx-2"></span>
@@ -51,16 +51,6 @@
         ></v-text-field>
       </v-card-title>
       <v-card-title v-if="editableFields && showControllers">
-        <!-- <v-expansion-panels>
-          <v-expansion-panel style="border: 1px solid blue" hover>
-            <v-expansion-panel-header
-              expand-icon="mdi-menu-down"
-              style="border-bottom: 1px dashed blue"
-            >
-              {{ $t("pages.students.datatable.show_controllers") }}
-            </v-expansion-panel-header>
-
-            <v-expansion-panel-content> -->
         <v-chip-group multiples>
           <span
             class="ma-2"
@@ -83,9 +73,6 @@
             </v-chip>
           </span>
         </v-chip-group>
-        <!-- </v-expansion-panel-content>
-          </v-expansion-panel>
-        </v-expansion-panels> -->
       </v-card-title>
       <v-card-text>
         <v-data-table
@@ -113,6 +100,14 @@
                 <v-icon v-show="hover">mdi-eye-outline</v-icon>
               </v-btn>
             </v-hover>
+          </template>
+          <template v-slot:[`item.payed_amount`]="{ item }">
+            <span class="font-weight-black">{{
+              item.payed_amount + " " + item.currency
+            }}</span>
+          </template>
+          <template v-slot:[`item.created_at`]="{ item }">
+            <relative-date :date="item.created_at" />
           </template>
           <template v-slot:[`item.fees_amount`]="{ item }">
             <span class="font-weight-black">{{
@@ -235,10 +230,14 @@
 <script>
 import api from "@/api";
 import { mainEventBus } from "@/main";
+import RelativeDate from "@/components/RelativeDate.vue";
 
 const allFields = [
   "university_id",
   "name",
+  "payed_amount",
+  "currency",
+  "reference_id",
   "department",
   "batch",
   "level",
@@ -276,7 +275,7 @@ export default {
     },
     apiEndPoint: {
       type: String,
-      default: "/students",
+      default: "/payments",
     },
     validFields: {
       type: Array,
@@ -287,27 +286,30 @@ export default {
       default: () => [
         "university_id",
         "name",
+        "payed_amount",
+        "currency",
+        "reference_id",
         "department",
         "batch",
         "level",
-        "is_active",
+        "created_at",
       ],
     },
   },
-  components: {},
+  components: { RelativeDate },
   created() {
-    this.$permissions().authorize(["students::retrieve"]);
+    this.$permissions().authorize(["payments::retrieve"]);
     this.selectedFields = this.fields;
     if (this.selectedFields.length < 1) {
       this.selectedFields.push("university_id");
     }
-    this.loadStudents();
-    mainEventBus.$on("updateStudents", this.loadStudents);
+    this.loadPayments();
+    mainEventBus.$on("updateStudents", this.loadPayments);
   },
   data: () => ({
     search: null,
     loading: null,
-    students: [],
+    payments: [],
     selectedFields: [],
     selectedStudents: [],
     showControllers: false,
@@ -321,7 +323,7 @@ export default {
       for (let field of allFields) {
         if (this.selectedFields.includes(field)) {
           headers.push({
-            text: this.$t(`pages.students.datatable.headers.${field}`),
+            text: this.$t(`pages.payments.datatable.headers.${field}`),
             value: field,
           });
         }
@@ -333,8 +335,13 @@ export default {
       return headers;
     },
     studentsData() {
-      const students = [];
-      for (let student of this.students) {
+      const payments = [];
+      for (let student of this.payments) {
+        student.fees = student.fees_data;
+        student.installments = student.installments_data;
+        student.reductions = student.reductions_data;
+        student.is_active = student.student.is_active;
+
         student.fees_name = student.fees.name;
         student.fees_amount = student.fees.amount;
         student.fees_currency = student.fees.currency;
@@ -361,9 +368,9 @@ export default {
 
         student.total_bill =
           Number(student.fees.amount) - Number(student.total_reductions);
-        students.push(student);
+        payments.push(student);
       }
-      return students;
+      return payments;
     },
   },
   methods: {
@@ -375,13 +382,15 @@ export default {
         this.selectedFields.splice(this.selectedFields.indexOf(field), 1);
       } else this.selectedFields.push(field);
     },
-    async loadStudents() {
+    async loadPayments() {
       if (this.loading) return false;
       this.loading = true;
       try {
         const response = await api.get(this.apiEndPoint);
         console.log(response.data.data);
-        this.students = response.data.data;
+        const payments = response.data.data.reverse();
+
+        this.payments = payments;
       } catch (error) {
         alert(error);
       }

@@ -39,6 +39,12 @@ export default [
     ],
   },
   {
+    titleKey: "payments",
+    icon: "mdi-cash-register",
+    name: "Payments.index",
+    hasOneOf: ["payments::retrieve"],
+  },
+  {
     titleKey: "Supervisors",
     icon: "mdi-account-tie-outline",
     name: "Supervisors.index",
@@ -66,4 +72,10 @@ export default [
       "roles::set_permissions",
     ],
   },
+  // {
+  //   titleKey: "Activities",
+  //   icon: "mdi-file-document-outline",
+  //   name: "Supervisors.activities.index",
+  //   hasOneOf: ["activity_logs::retrieve"],
+  // },
 ];

@@ -12,6 +12,14 @@ const routes = [
       import(/* webpackChunkName: "logout" */ "../views/Logout.vue"),
   },
   {
+    path: "/logs/activities",
+    name: "Supervisors.activities.index",
+    component: () =>
+      import(
+        /* webpackChunkName: "supervisors.activities" */ "../views/supervisors/activities/Index.vue"
+      ),
+  },
+  {
     path: "/supervisors",
     name: "Supervisors.index",
     component: () =>

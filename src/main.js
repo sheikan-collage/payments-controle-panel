@@ -27,6 +27,8 @@ Vue.prototype.$permissions = () => {
   return mainEventBus.$store.getters["Supervisors/permissions"];
 };
 
+import JsonExcel from "vue-json-excel";
+Vue.component("downloadExcel", JsonExcel);
 
 const vm = new Vue({
   router,
